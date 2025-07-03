@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>HaiCPassword - 검사 결과</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>비밀번호 검사 결과</h1>
+
+    <div class="password-container">
+      <input type="password" id="passwordInput" class="password-text" value="{{ password }}" readonly />
+      <button class="toggle-btn" onclick="togglePassword()">비밀번호 보기</button>
+    </div>
+
+    <p><strong>보안 등급 점수:</strong> {{ score }}</p>
+
+    <div class="feedback-box">
+      <p>{{ feedback }}</p>
+    </div>
+
+    <a href="/" class="back-btn">다시 검사하기</a>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pwInput = document.getElementById('passwordInput');
+      const btn = event.currentTarget;
+
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        btn.textContent = '비밀번호 숨기기';
+      } else {
+        pwInput.type = 'password';
+        btn.textContent = '비밀번호 보기';
+      }
+    }
+  </script>
+</body>
+</html>

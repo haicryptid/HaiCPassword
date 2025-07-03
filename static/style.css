@@ -1,0 +1,112 @@
+/* 전체 배경과 폰트 */
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* 폼 컨테이너 */
+.container {
+  background: #1e1e1e;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+/* 제목 */
+h1 {
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #61dafb; /* 은은한 청록색 포인트 */
+}
+
+/* 라벨 */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* 입력창 */
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* 체크박스 부분 */
+.show-password {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+.show-password label {
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 버튼 */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #61dafb;
+  color: #121212;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+.feedback-box {
+  background-color: #333;
+  border-left: 6px solid #61dafb;
+  padding: 15px 20px;
+  margin: 20px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  color: #e0e0e0;
+  word-break: break-all;  /* 긴 비밀번호 깨짐 방지 */
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #61dafb;
+  color: #121212;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #21a1f1;
+}

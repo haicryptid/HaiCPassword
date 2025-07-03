@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>HaiCPassword - 비밀번호 강도 검사기</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>HaiCPassword</h1>
+    <form method="POST">
+      <label for="password">비밀번호 입력:</label>
+      <input type="password" id="password" name="password" required />
+      <div class="show-password">
+        <input type="checkbox" id="showPw" />
+        <label for="showPw">비밀번호 보기</label>
+      </div>
+      <button type="submit">검사하기</button>
+    </form>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const showPwCheckbox = document.getElementById('showPw');
+
+    showPwCheckbox.addEventListener('change', () => {
+      if (showPwCheckbox.checked) {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    });
+  </script>
+</body>
+</html>
