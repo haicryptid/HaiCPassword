@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <title>HaiCPassword - 검사 결과</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
+
 <body>
   <div class="container">
-    <h1>비밀번호 검사 결과</h1>
+    <h1>비밀번호 검사가 끝났어! 🔐</h1>
 
     <div class="password-container">
       <input type="password" id="passwordInput" class="password-text" value="{{ password }}" readonly />
       <button class="toggle-btn" onclick="togglePassword()">비밀번호 보기</button>
     </div>
 
-    <p><strong>보안 등급 점수:</strong> {{ score }}</p>
+    <p class="score-text"><strong>보안 등급 점수:</strong> {{ score }}</p>
 
     <div class="feedback-box">
       <p>{{ feedback }}</p>
+    </div>
+
+    <!-- ✅ 추가된 보완 피드백 출력 -->
+    <div class="details-box">
+      <h3>🔍 보완할 점</h3>
+      <ul>
+        {% for msg in details %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
     </div>
 
     <a href="/" class="back-btn">다시 검사하기</a>
@@ -38,4 +50,9 @@
     }
   </script>
 </body>
+
+<footer>
+  &copy; 2025 HaiCPassword | v1.1.0
+</footer>
+
 </html>

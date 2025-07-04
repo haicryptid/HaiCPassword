@@ -6,26 +6,39 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 0;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* 폼 컨테이너 */
 .container {
-  background: #1e1e1e;
-  padding: 30px 40px;
+  max-width: 700px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #121212;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  width: 320px;
-  text-align: center;
+  color: #eee;
 }
+
 
 /* 제목 */
 h1 {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 35px;
   color: #61dafb; /* 은은한 청록색 포인트 */
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
 }
 
 /* 라벨 */
@@ -96,7 +109,10 @@ button:hover {
 }
 
 .back-btn {
-  display: inline-block;
+  display: block;
+  margin: 30px auto 0;
+  width: max-content;
+  text-align: center;
   margin-top: 10px;
   padding: 12px 20px;
   background-color: #61dafb;
@@ -109,4 +125,43 @@ button:hover {
 
 .back-btn:hover {
   background-color: #21a1f1;
+}
+
+.details-box {
+  margin-top: 20px;
+  background-color: #111;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  color: #eee;
+}
+
+.details-box ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.details-box li {
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+.password-container,
+.feedback-box,
+.details-box {
+  padding: 15px 20px;
+  word-wrap: break-word;
+}
+
+.score-text{
+  text-align: center;
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+footer{
+  text-align: center;
+  margin-top: 30px;
+  margin: 0px 0;
+  font-size: 0.9em;
+  color: #777;
 }
