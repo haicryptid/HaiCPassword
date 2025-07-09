@@ -4,9 +4,9 @@ import numpy as np
 import re
 
 app = Flask(__name__)
-model = joblib.load("classBalanced.pkl")  # 재현율 강화된 모델
+model = joblib.load("classBalanced.pkl")  # myModel이었던 것
 
-# 1️⃣ 비밀번호에서 특성 추출
+# 비밀번호에서 요소 추출
 def extract_features(password):
     length = len(password)
     capital = sum(1 for c in password if c.isupper())
@@ -22,21 +22,21 @@ def extract_features(password):
         'special': special
     }
 
-# 2️⃣ 추출된 특성으로 점수 계산
+# 추출된 특성으로 점수 계산
 def calculate_score(row):
     score = 0
 
-    # 길이 점수
+    # 길이 
     if row['length'] < 5:
         score += 0
     elif 5 <= row['length'] <= 8:
         score += 1
     elif 9 <= row['length'] <= 12:
         score += 2
-    else:  # 12자 이상
+    else: 
         score += 3
 
-    # 대문자 점수
+    # 대문자 
     if row['capital'] == 0:
         score += 0
     elif 1 <= row['capital'] <= 3:
@@ -44,7 +44,7 @@ def calculate_score(row):
     else:
         score += 2
 
-    # 소문자 점수
+    # 소문자 
     if row['small'] <= 1:
         score += 0
     elif 2 <= row['small'] <= 3:
@@ -54,7 +54,7 @@ def calculate_score(row):
     else:
         score += 2.4
 
-    # 숫자 점수
+    # 숫자 
     if row['digit'] <= 1:
         score += 0
     elif 2 <= row['digit'] <= 3:
@@ -62,7 +62,7 @@ def calculate_score(row):
     else:
         score += 0.76
 
-    # 특수문자 점수
+    # 특수 문자 
     if row['special'] == 0:
         score += 0
     elif 1 <= row['special'] <= 2:
@@ -72,20 +72,20 @@ def calculate_score(row):
 
     return score
 
-# 3️⃣ 점수에 따라 강도 등급 지정
+# 점수에 따라 강도 등급 지정
 def classify_strength(score): 
-    if score <= 1:
+    if score < 2:
         return 1  # 매우 취약
-    elif score <= 3:
+    elif score < 4:
         return 2  # 취약
-    elif score <= 5:
+    elif score < 6:
         return 3  # 보통
-    elif score <= 7:
+    elif score < 8:
         return 4  # 안전
     else:
         return 5  # 매우 안전
 
-# 4️⃣ 부족한 요소 피드백 제공
+# 상세 피드백 출력
 def get_detailed_feedback(features):
     messages = []
 
@@ -109,7 +109,7 @@ def get_detailed_feedback(features):
 
     return messages
 
-# 5️⃣ 라우트 구성
+# 라우트 구성
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -132,7 +132,7 @@ def index():
             password=pw,
             score=strength,
             feedback=feedback,
-            details=detailed_feedback  # 상세 피드백 전달!
+            details=detailed_feedback # 상세 피드백
         )
 
     return render_template("index.html")
